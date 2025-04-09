@@ -11,7 +11,6 @@ export default defineConfig({
         main: resolve(__dirname, 'src/main.ts'),
         preload: resolve(__dirname, 'src/preload.ts'),
         index: resolve(__dirname, 'index.html'),
-        webContents: resolve(__dirname, 'src/webContents/index.html')
       },
       external: [
         'electron',

@@ -5,6 +5,7 @@
   "main": "./dist/main.js",
   "scripts": {
     "dev": "tsc && concurrently \"vite\" \"wait-on tcp:3000 && electron-forge start\"",
+    "build-content": "vite build --config vite.dev.webcontents.ts",
     "package": "tsc && vite build && electron-forge package",
     "make": "tsc && vite build && electron-forge make",
     "publish": "tsc && vite build && electron-forge publish"
