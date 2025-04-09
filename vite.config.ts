@@ -11,6 +11,7 @@ export default defineConfig({
         main: resolve(__dirname, 'src/main.ts'),
         preload: resolve(__dirname, 'src/preload.ts'),
         index: resolve(__dirname, 'index.html'),
+        webContents: resolve(__dirname, 'webContents/index.html'),
       },
       external: [
         'electron',
@@ -18,7 +19,7 @@ export default defineConfig({
       ],
       output: {
         entryFileNames: '[name].js',
-        format: 'cjs',
+        format: 'esm',
       },
     },
   },
