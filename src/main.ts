@@ -2,6 +2,8 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import { setIPCElectronTestHandler } from './mainArea/ipcHandler/ipcElectronTestHandler';
 import path from 'path';
 import { startOverlayServer } from './mainArea/webServer/server';
+import { startWebSocket } from './mainArea/webSocket/webSocketServer';
+import { AppController } from './mainArea/appController/appController';
 
 if (require('electron-squirrel-startup')) app.quit();
 
@@ -33,7 +35,7 @@ app.on('ready', () => {
 
   setIPCElectronTestHandler(ipcMain);
 
-  startOverlayServer();
+  AppController.initiate();
 });
 
 app.on('window-all-closed', () => {

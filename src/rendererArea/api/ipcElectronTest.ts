@@ -1,5 +1,5 @@
 export interface IPCElectronTest {
-    sendMessage: () => Promise<string>;
+    sendMessage: (message: string) => Promise<string>;
 }
 
 declare global {

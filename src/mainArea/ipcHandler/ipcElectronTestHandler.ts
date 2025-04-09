@@ -1,22 +1,8 @@
 import { IpcMain } from "electron";
+import { AppController } from "../appController/appController";
 
 export function setIPCElectronTestHandler(ipcMain: IpcMain) {
-    ipcMain.handle('electron-test', async () => {
-        const randomWords = [
-            "apple",
-            "mountain",
-            "ocean",
-            "river",
-            "forest",
-            "sky",
-            "breeze",
-            "cloud",
-            "sunlight",
-            "flower"
-        ];
-
-        const index = Math.trunc(Math.random()*10);
-
-        return randomWords[index];
-    })
+    ipcMain.handle('electron-test', async (_, message: string) => {
+        AppController.instance.broadcast("SET_TEXT", message);
+    });
 }
