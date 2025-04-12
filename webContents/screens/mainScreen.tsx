@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react"
+import { RandomBox } from "../components/randomBox/randomBox";
+import { Message } from "../components/message/message";
 
 const PORT = 5765;
 
@@ -44,7 +46,7 @@ export const MainScreen: React.FC = () => {
   };
 
   useEffect(() => {
-    connectToWebSocket();
+    // connectToWebSocket();
 
     return () => {
       currentWebSocket?.close();
@@ -58,10 +60,14 @@ export const MainScreen: React.FC = () => {
         background: 'white',
         fontWeight: 600,
         borderRadius: 4,
-        boxShadow: 'initial',
-        padding: '1rem',
       }}>
         {value}
+      </div>
+      <div style={{position: 'absolute'}}>
+        <Message message="오늘의 목표 : 60가" />
+      </div>
+      <div style={{position: 'absolute'}}>
+        <RandomBox />
       </div>
     </div>
   );

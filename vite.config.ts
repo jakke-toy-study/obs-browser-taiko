@@ -1,11 +1,22 @@
 import { defineConfig } from "vite";
 import { resolve } from 'path';
 import { builtinModules } from 'module';
+import react from '@vitejs/plugin-react';
+import svgr from 'vite-plugin-svgr';
+
+let prefixCounter = 0;
 
 export default defineConfig({
   base: './',
+  plugins:[
+    react(), 
+    svgr({
+      include: "**/*.svg?react"
+    })
+  ],
   build: {
     outDir: '.vite/',
+    assetsDir: './assets',
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src/main.ts'),
