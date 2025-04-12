@@ -8,10 +8,10 @@ interface MessageProps {
 export const Message:React.FC<MessageProps> = ({message = "Hello"}) => {
     return (
         <div>
-            <div style={{position: 'absolute'}}>
+            <div>
                 <MessagePlate width={600} height={300}/>
             </div>
-            <div className="font-kukde" style={{position: 'absolute', left: 60, top: 140, fontSize: 24, width: 508, overflow:'hidden' }}>
+            <div className="font-kukde" style={{position: 'relative', left: 60, top: -160, fontSize: 24, width: 508, overflow:'hidden' }}>
                 {message}
             </div>
         </div>

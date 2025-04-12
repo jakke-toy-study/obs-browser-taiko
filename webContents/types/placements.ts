@@ -1,0 +1,1 @@
+export type Placements = {top?: number, left?: number}

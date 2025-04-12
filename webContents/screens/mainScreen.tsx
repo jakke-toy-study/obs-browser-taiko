@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react"
-import { RandomBox } from "../components/randomBox/randomBox";
+import { RandomBox } from "../components/randomBox/boxComponent";
 import { Message } from "../components/message/message";
+import { ProfileMessage } from "./items/profileMessage";
 
 const PORT = 5765;
 
 export const MainScreen: React.FC = () => {
   const [currentWebSocket, setWebSocket] = useState<WebSocket>();
-  const [value, setValue] = useState<string>("Hello");
+  const [profileMessage, setProfileMessage] = useState<string>("Hello");
 
   const connectToWebSocket = () => {
     const socket = new WebSocket(`ws://localhost:${PORT}`);
@@ -22,11 +23,11 @@ export const MainScreen: React.FC = () => {
 
       switch (message.type) {
         case "INIT":
-          setValue(message.payload);
+          setProfileMessage(message.payload);
           break;
 
         case "SET_TEXT":
-          setValue(message.payload);
+          setProfileMessage(message.payload);
           break;
 
         default:
@@ -54,20 +55,9 @@ export const MainScreen: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ flexDirection: 'column', flex: 1 }}>
-      <div style={{
-        borderWidth: 1,
-        background: 'white',
-        fontWeight: 600,
-        borderRadius: 4,
-      }}>
-        {value}
-      </div>
-      <div style={{position: 'absolute'}}>
-        <Message message="오늘의 목표 : 60가" />
-      </div>
-      <div style={{position: 'absolute'}}>
-        <RandomBox />
+    <div>
+      <div style={{ flexDirection: 'column', flex: 1 }}>
+        <ProfileMessage message={""} /> 
       </div>
     </div>
   );

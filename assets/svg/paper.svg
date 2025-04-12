@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-3dd1500d-7cbe-49f9-a704-4ff4e19ae261" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 808 608">
+  <defs>
+    <style>
+      .uuid-805574f3-0528-43c7-83fe-064ea66e2344 {
+        fill: #d5d8e0;
+      }
+
+      .uuid-805574f3-0528-43c7-83fe-064ea66e2344, .uuid-22eb1d1d-d24b-4a04-b756-dcc19eda9ed3 {
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 8px;
+      }
+
+      .uuid-22eb1d1d-d24b-4a04-b756-dcc19eda9ed3 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <polyline class="uuid-22eb1d1d-d24b-4a04-b756-dcc19eda9ed3" points="604 604 4 604 4 4 804 4 804 404"/>
+  <polyline class="uuid-805574f3-0528-43c7-83fe-064ea66e2344" points="804 404 604 604 604 404 804 404"/>
+</svg>
