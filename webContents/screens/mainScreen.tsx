@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"
-import { RandomBox } from "../components/randomBox/boxComponent";
-import { Message } from "../components/message/message";
-import { ProfileMessage } from "./items/profileMessage";
+import React, { useEffect, useRef, useState } from "react"
+import { EffectHandle } from "../effects/effectWrapper";
+import { SampleEffectBoom } from "../effects/sampleEffect/sampleEffectBoom";
 
 const PORT = 5765;
 
 export const MainScreen: React.FC = () => {
   const [currentWebSocket, setWebSocket] = useState<WebSocket>();
   const [profileMessage, setProfileMessage] = useState<string>("Hello");
+  const boomRef = useRef<EffectHandle>(null);
 
   const connectToWebSocket = () => {
     const socket = new WebSocket(`ws://localhost:${PORT}`);
@@ -56,9 +56,13 @@ export const MainScreen: React.FC = () => {
 
   return (
     <div>
-      <div style={{ flexDirection: 'column', flex: 1 }}>
+      {/* <div style={{ flexDirection: 'column', flex: 1 }}>
         <ProfileMessage message={""} /> 
-      </div>
+      </div> */}
+      <SampleEffectBoom ref={boomRef}/>
+
+      <button onClick={() => boomRef.current?.play()}>▶ Play Effect</button>
+      <button onClick={() => boomRef.current?.stop()}>⏹ Stop Effect</button>
     </div>
   );
 };
