@@ -38,7 +38,7 @@ import React, {
     }));
   
     return (
-      <div>
+      <div style={{zIndex: 999}}>
         <EffectLayer ref={layerRef}>
           <SampleEffectBoom ref={boomRef} />
         </EffectLayer>

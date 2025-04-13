@@ -1,1 +1,1 @@
-export type SongGenre = "Namco"
+export type SongGenre = "Namco Original"|"Pops"|"Kids"|"Anime"|"Vocaloid"|"Game Music"|"Variety"|"Classic"|"Undefined"

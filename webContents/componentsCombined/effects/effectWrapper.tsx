@@ -2,6 +2,8 @@ import React, {
     forwardRef,
     useImperativeHandle,
     ReactNode,
+    useState,
+    useEffect,
 } from "react";
 import { useEffectController } from "./effectController";
 
@@ -24,13 +26,38 @@ interface EffectWrapperProps {
 export const EffectWrapper = forwardRef<EffectHandle, EffectWrapperProps>(
     ({cssClass, children, className, top = 0, left = 0, zIndex = 100}, ref) => {
     const effect = useEffectController(cssClass);
+    const [visible, setVisible] = useState(false);
+
+    const elRef = effect.ref;
+    
+    useEffect(() => {
+        const el = elRef.current;
+        if (!el) return;
+  
+        const handleEnd = () => {
+          setVisible(false);
+        };
+  
+        el.addEventListener("animationend", handleEnd);
+        return () => {
+          el.removeEventListener("animationend", handleEnd);
+        };
+    }, [elRef]);
 
     useImperativeHandle(ref, () => ({
-        play: effect.play,
-        pause: effect.pause,
-        stop: effect.stop,
-        isPlaying: effect.isPlaying
-    }));
+        play: () => {
+          setVisible(true);
+          effect.play();
+        },
+        pause: () => {
+          effect.pause();
+        },
+        stop: () => {
+          setVisible(false);
+          effect.stop();
+        },
+        isPlaying: effect.isPlaying,
+      }));
 
 
     return (
@@ -41,8 +68,9 @@ export const EffectWrapper = forwardRef<EffectHandle, EffectWrapperProps>(
                 position: "absolute",
                 top,
                 left,
-                zIndex, // ✅ 적용
+                zIndex,
                 pointerEvents: "none",
+                display: visible ? "inline-block" : "none"
             }}
         >
             {children}
