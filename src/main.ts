@@ -1,5 +1,5 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
-import { setIPCElectronTestHandler } from './mainArea/ipcHandler/ipcElectronTestHandler';
+import { setIPCMessageHandler } from './mainArea/ipcHandler/ipcElectronMessageHandler';
 import path from 'path';
 import { startOverlayServer } from './mainArea/webServer/server';
 import { startWebSocket } from './mainArea/webSocket/webSocketServer';
@@ -33,7 +33,7 @@ const createWindow = () => {
 app.on('ready', () => {
   createWindow();
 
-  setIPCElectronTestHandler(ipcMain);
+  setIPCMessageHandler(ipcMain);
 
   AppController.initiate();
 });

@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react"
-import { EffectHandle } from "../effects/effectWrapper";
-import { SampleEffectBoom } from "../effects/sampleEffect/sampleEffectBoom";
+import { EffectLayerWrapper, EffectLayerWrapperHandle } from "./effects/effectLayerWrapper";
+import {ProfileMessage} from './items/profileMessage';
 
 const PORT = 5765;
 
 export const MainScreen: React.FC = () => {
   const [currentWebSocket, setWebSocket] = useState<WebSocket>();
   const [profileMessage, setProfileMessage] = useState<string>("Hello");
-  const boomRef = useRef<EffectHandle>(null);
+  const effectWrapperRef = useRef<EffectLayerWrapperHandle>(null);
 
   const connectToWebSocket = () => {
     const socket = new WebSocket(`ws://localhost:${PORT}`);
@@ -29,6 +29,10 @@ export const MainScreen: React.FC = () => {
         case "SET_TEXT":
           setProfileMessage(message.payload);
           break;
+        
+        case "PLAY_EFFECT":
+          playEffect(message.payload);
+          break;
 
         default:
           console.warn("알 수 없는 메시지 타입:", message.type);
@@ -46,8 +50,13 @@ export const MainScreen: React.FC = () => {
     setWebSocket(socket);
   };
 
+  // Effect controller
+  const playEffect = (id: string) => {
+    effectWrapperRef.current?.play(id);
+  }
+
   useEffect(() => {
-    // connectToWebSocket();
+    connectToWebSocket();
 
     return () => {
       currentWebSocket?.close();
@@ -56,13 +65,10 @@ export const MainScreen: React.FC = () => {
 
   return (
     <div>
-      {/* <div style={{ flexDirection: 'column', flex: 1 }}>
-        <ProfileMessage message={""} /> 
-      </div> */}
-      <SampleEffectBoom ref={boomRef}/>
-
-      <button onClick={() => boomRef.current?.play()}>▶ Play Effect</button>
-      <button onClick={() => boomRef.current?.stop()}>⏹ Stop Effect</button>
+      <div style={{ flexDirection: 'column', flex: 1 }}>
+        <ProfileMessage message={profileMessage} /> 
+      </div>
+      <EffectLayerWrapper ref={effectWrapperRef} />
     </div>
   );
 };

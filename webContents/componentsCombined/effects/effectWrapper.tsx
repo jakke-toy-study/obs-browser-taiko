@@ -3,7 +3,7 @@ import React, {
     useImperativeHandle,
     ReactNode,
 } from "react";
-import { useEffectController, EffectController } from "./effectController";
+import { useEffectController } from "./effectController";
 
 export interface EffectHandle {
     play: () => void;
@@ -16,9 +16,13 @@ interface EffectWrapperProps {
     cssClass: string;
     children?: ReactNode;
     className?: string;
+    top?: number | string;
+    left?: number | string;
+    zIndex?: number;
 }
 
-export const EffectWrapper = forwardRef<EffectHandle, EffectWrapperProps>(({cssClass, children, className}, ref) => {
+export const EffectWrapper = forwardRef<EffectHandle, EffectWrapperProps>(
+    ({cssClass, children, className, top = 0, left = 0, zIndex = 100}, ref) => {
     const effect = useEffectController(cssClass);
 
     useImperativeHandle(ref, () => ({
@@ -33,6 +37,13 @@ export const EffectWrapper = forwardRef<EffectHandle, EffectWrapperProps>(({cssC
         <div
             ref={effect.ref as React.RefObject<HTMLDivElement>}
             className={className}
+            style={{
+                position: "absolute",
+                top,
+                left,
+                zIndex, // ✅ 적용
+                pointerEvents: "none",
+            }}
         >
             {children}
         </div>
