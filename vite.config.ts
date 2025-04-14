@@ -4,15 +4,13 @@ import { builtinModules } from 'module';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 
-let prefixCounter = 0;
-
 export default defineConfig({
   base: './',
   plugins:[
     react(), 
     svgr({
       include: "**/*.svg?react"
-    })
+    }),
   ],
   build: {
     outDir: '.vite/',
@@ -40,6 +38,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
+      "rendererArea": resolve(__dirname, './src/rendererArea'),
+      "mainArea": resolve(__dirname, './src/mainArea'),
     },
   },
 });

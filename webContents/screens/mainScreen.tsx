@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { EffectLayerWrapper, EffectLayerWrapperHandle } from "./effects/effectLayerWrapper";
 import {ProfileMessage} from './items/profileMessage';
+import { SongPaper } from "./effects/randomSong/randomBox/songPaper";
 
 const PORT = 5765;
 
@@ -13,13 +14,13 @@ export const MainScreen: React.FC = () => {
     const socket = new WebSocket(`ws://localhost:${PORT}`);
 
     socket.onopen = () => {
-      console.log("WebSocket 연결됨");
+      console.log("WebSocket Connected");
       socket.send(JSON.stringify({ type: "PING", payload: "Hello server!" }));
     };
 
     socket.onmessage = (event) => {
       const message = JSON.parse(event.data);
-      console.log("서버로부터 수신:", message);
+      console.log("Message from server:", message);
 
       switch (message.type) {
         case "INIT":
@@ -35,16 +36,16 @@ export const MainScreen: React.FC = () => {
           break;
 
         default:
-          console.warn("알 수 없는 메시지 타입:", message.type);
+          console.warn("Unknown message:", message.type);
       }
     };
 
     socket.onerror = (err) => {
-      console.error("WebSocket 오류:", err);
+      console.error("WebSocket Error:", err);
     };
 
     socket.onclose = () => {
-      console.log("WebSocket 연결 종료");
+      console.log("WebSocket Disconnected");
     };
 
     setWebSocket(socket);
@@ -66,10 +67,10 @@ export const MainScreen: React.FC = () => {
   return (
     <div>
       <div style={{ flexDirection: 'column', flex: 1 }}>
-        <ProfileMessage message={profileMessage} /> 
+        {/* <ProfileMessage message={profileMessage} />  */}
       </div>
-      {/* <RandomSongEffectCore /> */}
       <EffectLayerWrapper ref={effectWrapperRef} />
+      {/* <SongPaper genre={"Game Music"} songName="Synthesis." artistName="tn-shi" level={{course: 'ura', level: 10}} /> */}
     </div>
   );
 };

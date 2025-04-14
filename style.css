@@ -10,3 +10,11 @@
 .font-kukde {
     font-family: 'SDKukdetopokki';
 }
+
+.main-header{
+    -webkit-app-region: drag;
+}
+
+.key-color-main {
+    background-color: rgb(234, 108, 106);
+}

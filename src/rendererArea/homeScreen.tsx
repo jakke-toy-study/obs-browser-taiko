@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react"
+import { Header } from 'rendererArea/components/header/header';
 
 const DEFAULT_MESSAGE = "HELLO";
 
@@ -22,23 +23,22 @@ export const HomeScreen = () => {
     }
 
     return (
-        <div className="p-2 flex flex-col gap-2">
-            <div>
-                Hello, this is jakke's obs browser kit.
-            </div>
-            <hr/>
-            <div className="flex flex-col gap-2">
-                <label>Set Profile Message</label>
-                <div className="flex flex-row gap-2">
-                    <input className="border rounded-md w-[320px]" onChange={onChangeMessage} defaultValue={message}/>
-                    <button className="border rounded-md pl-2 pr-2" onClick={setProfileMessage}>Set message</button>
+        <div className="flex flex-col">
+            <Header />
+            <div className="flex flex-col gap-2 p-2">
+                <div className="flex flex-col gap-2">
+                    <label>Set Profile Message</label>
+                    <div className="flex flex-row gap-2">
+                        <input className="border rounded-md w-[320px]" onChange={onChangeMessage} defaultValue={message}/>
+                        <button className="border rounded-md pl-2 pr-2" onClick={setProfileMessage}>Set message</button>
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col gap-2">
-                <label>Play Animation</label>
-                <div className="flex flex-row gap-2">
-                    <input className="border rounded-md w-[320px]" ref={effectIdRef} placeholder="Type your animation id..."/>
-                    <button className="border rounded-md pl-2 pr-2" onClick={onClickPlayEffect}>Play it</button>
+                <div className="flex flex-col gap-2">
+                    <label>Play Animation</label>
+                    <div className="flex flex-row gap-2">
+                        <input className="border rounded-md w-[320px]" ref={effectIdRef} placeholder="Type your animation id..."/>
+                        <button className="border rounded-md pl-2 pr-2" onClick={onClickPlayEffect}>Play it</button>
+                    </div>
                 </div>
             </div>
         </div>
