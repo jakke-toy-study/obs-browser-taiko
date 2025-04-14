@@ -4,7 +4,7 @@ import "./sampleEffectStyle.css";
 
 export const SampleEffectBoom = React.forwardRef<EffectHandle>((_, ref) => {
   return (
-    <EffectWrapper ref={ref} cssClass="boom" className="effect-target">
+    <EffectWrapper ref={ref}>
       💥 Boom!
     </EffectWrapper>
   );

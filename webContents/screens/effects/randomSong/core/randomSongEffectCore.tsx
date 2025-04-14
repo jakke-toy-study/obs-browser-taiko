@@ -1,14 +1,14 @@
 import React from "react"
-import { BoxComponent } from "./randomBox/boxComponent";
-import { BoxMattComponent } from "./randomBox/boxMattComponent";
-import { Hand } from "./randomBox/hand";
-import { HandNoPaper } from "./randomBox/handNoPaper";
+import { BoxComponent } from "../randomBox/boxComponent";
+import { BoxMattComponent } from "../randomBox/boxMattComponent";
+import { Hand } from "../randomBox/hand";
+import { HandNoPaper } from "../randomBox/handNoPaper";
+import { SongPaper } from "../randomBox/songPaper";
 import './randomSongEffectStyle.css';
-import { SongPaper } from "./randomBox/songPaper";
 
 export const RandomSongEffectCore:React.FC = () => {
     return (
-        <div style={{width: 1920, height: 1080}}>
+        <div style={{width: 1920, height: 1080}} className="random-song-core">
             {/* Box */}
             <div className="random-box" style={{position: "absolute", scale: '70%', left: 540, top: 300}}>
                 <div style={{position: 'absolute', top: 60}}>

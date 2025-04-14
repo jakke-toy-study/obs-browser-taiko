@@ -8,7 +8,7 @@ export interface EffectController {
     ref: React.RefObject<HTMLElement>
 }
 
-export function useEffectController(cssClassName: string): EffectController {
+export function useEffectController(): EffectController {
     const ref = useRef<HTMLElement>(null);
     const [playing, setPlaying] = useState(false);
 
@@ -16,9 +16,8 @@ export function useEffectController(cssClassName: string): EffectController {
         const el = ref.current;
         if (!el) return;
 
-        el.classList.remove(cssClassName);
+        if(el.classList)
         void el.offsetWidth;
-        el.classList.add(cssClassName);
         setPlaying(true);
     }
 
@@ -32,7 +31,6 @@ export function useEffectController(cssClassName: string): EffectController {
     const stop = () => {
         const el = ref.current;
         if (!el) return;
-        el.classList.remove(cssClassName);
         el.style.animationPlayState = "initial";
         setPlaying(false);
     }

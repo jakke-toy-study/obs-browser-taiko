@@ -8,6 +8,7 @@ import React, {
   import { EffectLayerHandle } from "../../componentsCombined/effects/effectLayerHandle";
   import { SampleEffectBoom } from "../../screens/effects/sampleEffect/sampleEffectBoom";
   import { EffectHandle } from "../../componentsCombined/effects/effectWrapper";
+import { RandomSongEffect } from "./randomSong/randomSongEffect";
   
   export interface EffectLayerWrapperHandle {
     play: (id: string) => void;
@@ -17,14 +18,17 @@ import React, {
   export const EffectLayerWrapper = forwardRef<EffectLayerWrapperHandle>((_, ref) => {
     const layerRef = useRef<EffectLayerHandle>(null);
     const boomRef = useRef<EffectHandle>(null);
+    const randomSongRef = useRef<EffectHandle>(null);
   
     useEffect(() => {
-      if (layerRef.current && boomRef.current) {
-        layerRef.current.registerEffect("boom", boomRef.current);
+      if (layerRef.current) {
+        if(boomRef.current) layerRef.current.registerEffect("boom", boomRef.current);
+        if(randomSongRef.current) layerRef.current.registerEffect("randomSong", randomSongRef.current);
       }
   
       return () => {
         layerRef.current?.unregisterEffect("boom");
+        layerRef.current?.unregisterEffect("randomSong");
       };
     }, []);
   
@@ -41,6 +45,7 @@ import React, {
       <div style={{zIndex: 999}}>
         <EffectLayer ref={layerRef}>
           <SampleEffectBoom ref={boomRef} />
+          <RandomSongEffect ref={randomSongRef} />
         </EffectLayer>
       </div>
     );

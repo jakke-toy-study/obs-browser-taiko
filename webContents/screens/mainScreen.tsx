@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import { EffectLayerWrapper, EffectLayerWrapperHandle } from "./effects/effectLayerWrapper";
 import {ProfileMessage} from './items/profileMessage';
-import { RandomSongEffectCore } from "./effects/randomSong/randomSongEffectCore";
 
 const PORT = 5765;
 
@@ -66,13 +65,11 @@ export const MainScreen: React.FC = () => {
 
   return (
     <div>
-      {/* <div style={{ flexDirection: 'column', flex: 1 }}>
+      <div style={{ flexDirection: 'column', flex: 1 }}>
         <ProfileMessage message={profileMessage} /> 
-      </div> */}
-      <EffectLayerWrapper ref={effectWrapperRef} />
-      <div style={{position: 'absolute', zIndex: 1000}}>
-        <RandomSongEffectCore />
       </div>
+      {/* <RandomSongEffectCore /> */}
+      <EffectLayerWrapper ref={effectWrapperRef} />
     </div>
   );
 };
