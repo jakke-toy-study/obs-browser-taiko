@@ -73,7 +73,7 @@
 }
 
 .random-song-paper {
-  animation: songPaper 16s forwards;
+  animation: songPaper 16s;
 }
 
 @keyframes songPaper {
@@ -91,7 +91,7 @@
 }
 
 .random-song-core {
-  animation: randomSongCore 12s forwards
+  animation: randomSongCore 16s
 }
 
 @keyframes randomSongCore {

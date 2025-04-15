@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: 'SDKukdetopokki';
-    src: url('./assets//font/SDKukdetopokki.woff');
+    src: url('./assets/font/SDKukdetopokki.woff');
 }
 
 .font-kukde {
@@ -17,4 +17,12 @@
 
 .key-color-main {
     background-color: rgb(234, 108, 106);
+}
+
+:lang(ja) {
+    font-family: "M PLUS Rounded 1c";
+}
+  
+body {
+    font-family: "SDKukdetopokki", "M PLUS Rounded 1c", sans-serif;
 }

@@ -26,7 +26,7 @@ export const RandomSongEffectCore:React.FC = () => {
             </div>
             {/* Paper */}
             <div style={{position: 'absolute', top: 60, left: 320, scale: '60%'}} className="random-song-paper">
-                <SongPaper genre={"Game Music"} songName="Synthesis." artistName="tn-shi" />
+                <SongPaper genre={"Game Music"} songName="Synthesis." artistName="tn-shi, 山神カルタ" />
             </div>
         </div>
     )
