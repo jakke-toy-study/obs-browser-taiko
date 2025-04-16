@@ -42,3 +42,8 @@ Then, it will start vite server.
 
 While dev server on, you can use HMR of webContents at the browser (localhost:3000)
 
+---
+
+### Memo
+- Currently, PORTs is hard coded. So, if someone clone this repository, it would be better to change them as your own ENV.
+
