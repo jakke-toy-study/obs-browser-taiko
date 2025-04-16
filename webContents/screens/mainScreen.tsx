@@ -70,7 +70,6 @@ export const MainScreen: React.FC = () => {
         {/* <ProfileMessage message={profileMessage} />  */}
       </div>
       <EffectLayerWrapper ref={effectWrapperRef} />
-      {/* <SongPaper genre={"Game Music"} songName="Synthesis." artistName="tn-shi, 山神カルタ" level={{course: 'ura', level: 10}} /> */}
     </div>
   );
 };

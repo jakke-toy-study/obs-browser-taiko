@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: 'SDKukdetopokki';
-    src: url('./assets/font/SDKukdetopokki.woff');
+    src: url('./static/font/fonts/SDKukdetopokki.woff');
 }
 
 .font-kukde {

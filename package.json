@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm run build-content && tsc && concurrently \"vite\" \"wait-on tcp:3000 && electron-forge start\"",
     "build-content": "vite build --config vite.dev.webcontents.ts",
-    "package": "tsc && vite build && electron-forge package",
+    "package": "tsc && vite build --config vite.dev.webcontents.ts && vite build && electron-forge package",
     "make": "tsc && vite build && electron-forge make",
     "publish": "tsc && vite build && electron-forge publish",
     "svgr": "npx @svgr/cli -d ./assets/svg --ignore-existing --typescript --no-dimensions ./assets/svg/tsx"
